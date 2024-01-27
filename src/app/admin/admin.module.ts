@@ -6,9 +6,13 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { AdminDashboardPageComponent } from './components/admin-dashboard-page/admin-dashboard-page.component';
 import { AdminEditPageComponent } from './components/admin-edit-page/admin-edit-page.component';
 import { AdminCreatePageComponent } from './components/admin-create-page/admin-create-page.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AuthService } from "../services/auth.service";
 
 @NgModule({
     imports: [
+        FormsModule,
+        ReactiveFormsModule,
         CommonModule,
         RouterModule.forChild(
             [
@@ -16,15 +20,16 @@ import { AdminCreatePageComponent } from './components/admin-create-page/admin-c
                     path: '', component: AdminPageComponent, children: [
                         { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
                         { path: 'login', component: LoginPageComponent },
-                        { path: 'da', component: AdminDashboardPageComponent },
-                        { path: 'cr', component: AdminCreatePageComponent },
-                        { path: 'post/:id/ed', component: AdminEditPageComponent },
+                        { path: 'dashboard', component: AdminDashboardPageComponent },
+                        { path: 'createpost', component: AdminCreatePageComponent },
+                        { path: 'post/:id/editpost', component: AdminEditPageComponent },
                     ]
                 }
             ]
         )
     ],
     exports: [RouterModule],
+    providers: [AuthService],
     declarations: [
 
 

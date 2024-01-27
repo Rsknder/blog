@@ -15,6 +15,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { PostPageComponent } from './components/post-page/post-page.component';
 import { LostPageComponent } from './components/lost-page/lost-page.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
+import { PostComponent } from './components/post/post.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AboutPageComponent } from './components/about-page/about-page.component
     HomePageComponent,
     PostPageComponent,
     LostPageComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    PostComponent
   ],
   imports: [
     MatIconModule,

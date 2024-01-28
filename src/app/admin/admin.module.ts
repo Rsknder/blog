@@ -8,12 +8,14 @@ import { AdminEditPageComponent } from './components/admin-edit-page/admin-edit-
 import { AdminCreatePageComponent } from './components/admin-create-page/admin-create-page.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthService } from "../services/auth.service";
+import { SharedModule } from "../shared.module";
 
 @NgModule({
     imports: [
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
+        SharedModule,
         RouterModule.forChild(
             [
                 {

@@ -16,6 +16,7 @@ import { PostPageComponent } from './components/post-page/post-page.component';
 import { LostPageComponent } from './components/lost-page/lost-page.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { PostComponent } from './components/post/post.component';
+import { SharedModule } from './shared.module';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { PostComponent } from './components/post/post.component';
     MatToolbarModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

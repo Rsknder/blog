@@ -1,12 +1,16 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { FbAuthResponse, User } from "../interfaces/interfaces";
-import { Observable, tap } from "rxjs";
+import { Observable, Subject, catchError, tap, throwError } from "rxjs";
 import { environments } from "src/environments/environment";
 
 @Injectable()
 export class AuthService {
-    constructor(private http: HttpClient) {
+
+    public error$: Subject<string> = new Subject<string>()
+
+    constructor(
+        private http: HttpClient) {
     }
 
     get token(): string | null {
@@ -21,16 +25,41 @@ export class AuthService {
     login(user: User): Observable<any> {
         return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environments.apiKey}`, user)
             .pipe(
-                tap(this.setToken)
+                tap(this.setToken),
+                catchError(this.handleError.bind(this))
             )
     }
 
+
     logout() {
+
         this.setToken(null)
     }
 
     isAuth(): boolean {
-        return !!this.token
+
+        if (this.token === null || this.token === undefined) { return false }
+        else { return true }
+
+    }
+
+    private handleError(error: HttpErrorResponse): any {
+        const { message } = error.error.error
+        switch (message) {
+            case 'EMAIL_NOT_FOUND':
+                this.error$.next('Email not found')
+                break
+            case 'INVALID_LOGIN_CREDENTIALS':
+                this.error$.next('Wrong login')
+                break
+            case 'TOO_MANY_ATTEMPTS_TRY_LATER':
+                this.error$.next('Too many ateeempts, wait 1h')
+                break
+
+        }
+        return throwError(error)
+
+
     }
 
     // private setToken(response: FbAuthResponse | null) {

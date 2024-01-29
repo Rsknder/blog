@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AdminPageComponent implements OnInit {
   constructor(
     private router: Router,
-    private auth: AuthService
+    public auth: AuthService
   ) {
 
   }

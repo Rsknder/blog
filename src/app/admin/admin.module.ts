@@ -9,7 +9,7 @@ import { AdminCreatePageComponent } from './components/admin-create-page/admin-c
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthService } from "../services/auth.service";
 import { SharedModule } from "../shared.module";
-import { AuthGuard } from "../services/auth.guard";
+import { AuthGuard } from "../guards/auth.guard";
 
 @NgModule({
     imports: [

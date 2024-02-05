@@ -19,7 +19,7 @@ export class AuthService {
             this.logout()
             return null
         }
-        return localStorage.getItem('token')
+        return localStorage.getItem('token') + ''
     }
 
     login(user: User): Observable<any> {

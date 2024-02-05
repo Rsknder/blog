@@ -19,7 +19,7 @@ export class AuthService {
             this.logout()
             return null
         }
-        return localStorage.getItem('token') + ''
+        return localStorage.getItem('token')
     }
 
     login(user: User): Observable<any> {
@@ -38,8 +38,10 @@ export class AuthService {
 
     isAuth(): boolean {
 
-        if (this.token === null || this.token === undefined) { return false }
-        else { return true }
+        console.log(this.token)
+
+        if (this.token == null && this.token == undefined) { console.log("!Auth-false"); return false }
+        else { console.log("!Auth-true"); return true }
 
     }
 
@@ -72,7 +74,8 @@ export class AuthService {
             console.log(response)
         }
         else {
-            localStorage.clear
+            localStorage.clear()
+            console.log("localStorage.cleared")
         }
     }
 

@@ -16,7 +16,7 @@ export class AdminPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.log("isauh:", this.auth.isAuth())
   }
 
   logout(event: Event) {

@@ -26,6 +26,11 @@ export class LoginPageComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(6)])
     })
+
+    if (this.auth.isAuth() === true) {
+      this.router.navigate(['/admin', 'dashboard'])
+    }
+
   }
 
   submit() {

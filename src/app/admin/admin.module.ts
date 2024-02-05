@@ -23,9 +23,9 @@ import { AuthGuard } from "../guards/auth.guard";
                     path: '', component: AdminPageComponent, children: [
                         { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
                         { path: 'login', component: LoginPageComponent },
-                        { path: 'dashboard', component: AdminDashboardPageComponent },
-                        { path: 'createpost', component: AdminCreatePageComponent },
-                        { path: 'post/:id/editpost', component: AdminEditPageComponent },
+                        { path: 'dashboard', component: AdminDashboardPageComponent, canActivate: [AuthGuard] },
+                        { path: 'createpost', component: AdminCreatePageComponent, canActivate: [AuthGuard] },
+                        { path: 'post/:id/editpost', component: AdminEditPageComponent, canActivate: [AuthGuard] },
                     ]
                 }
             ]

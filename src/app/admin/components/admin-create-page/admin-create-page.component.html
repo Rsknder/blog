@@ -1,39 +1,51 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="submit()">
   <h1>New post creation</h1>
   <div class="form-control">
     <label for="title"> Post's title</label>
-    <input formControlName="title" id="title" type="text" />
-    <div
-      class="error"
-      *ngIf="form.get('title')?.touched && form.get('title')?.invalid"
-    >
-      <small *ngIf!="form.get('title')?.errors['required']">enter title</small>
+    <div>
+      <input formControlName="title" id="title" type="text" />
+      <div
+        class="error"
+        *ngIf="form.get('title')?.touched && form.get('title')?.invalid"
+      >
+        <small *ngIf!="form.get('title')?.errors['required']"
+          >enter title</small
+        >
+      </div>
     </div>
   </div>
 
   <div class="form-control">
     <label for="author"> Post's author</label>
-    <input formControlName="author" id="author" type="author" />
-    <div
-      class="error"
-      *ngIf="form.get('author')?.touched && form.get('author')?.invalid"
-    >
-      <small *ngIf!="form.get('author')?.errors['required']"
-        >enter author</small
+
+    <div>
+      <input formControlName="author" id="author" type="author" />
+      <div
+        class="error"
+        *ngIf="form.get('author')?.touched && form.get('author')?.invalid"
       >
+        <small *ngIf!="form.get('author')?.errors['required']"
+          >enter author</small
+        >
+      </div>
     </div>
   </div>
 
   <!-- need to insert any html edit box -->
   <div class="form-control">
     <label for="text"> Post's text</label>
-    <input formControlName="text" id="text" type="text" />
-    <div
-      class="error"
-      *ngIf="form.get('text')?.touched && form.get('text')?.invalid"
-    >
-      <small *ngIf!="form.get('text')?.errors['required']">enter text</small>
+    <div>
+      <input formControlName="text" id="text" type="text" />
+      <div
+        class="error"
+        *ngIf="form.get('text')?.touched && form.get('text')?.invalid"
+      >
+        <small *ngIf!="form.get('text')?.errors['required']">enter text</small>
+      </div>
     </div>
   </div>
+
   <!-- need to insert any html edit box for replace input text -->
+
+  <button type="submit" [disabled]="form.invalid">Create post</button>
 </form>

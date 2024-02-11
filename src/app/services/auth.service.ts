@@ -38,10 +38,8 @@ export class AuthService {
 
     isAuth(): boolean {
 
-        console.log(this.token)
-
-        if (this.token == null && this.token == undefined) { console.log("!Auth-false"); return false }
-        else { console.log("!Auth-true"); return true }
+        if (this.token) { return true }
+        else { return false }
 
     }
 
@@ -71,11 +69,11 @@ export class AuthService {
             const expDate = new Date(new Date().getTime() + +response.expiresIn * 1000)
             localStorage.setItem('token', response.idToken)
             localStorage.setItem('token-exp', expDate.toString())
-            console.log(response)
+
         }
         else {
             localStorage.clear()
-            console.log("localStorage.cleared")
+
         }
     }
 

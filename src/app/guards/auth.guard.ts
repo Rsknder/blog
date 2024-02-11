@@ -11,6 +11,16 @@ export class AuthGuard implements CanActivate {
 
     }
 
+
+
+
+    //                    guards!
+
+
+
+
+
+
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
@@ -23,7 +33,7 @@ export class AuthGuard implements CanActivate {
             this.auth.logout()
             this.router.navigate(['/admin', 'login'], {
                 queryParams: {
-                    to_login: true
+                    loginRequired: true
                 }
             })
             return false

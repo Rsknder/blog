@@ -7,7 +7,6 @@ import { AdminDashboardPageComponent } from './components/admin-dashboard-page/a
 import { AdminEditPageComponent } from './components/admin-edit-page/admin-edit-page.component';
 import { AdminCreatePageComponent } from './components/admin-create-page/admin-create-page.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AuthService } from "../services/auth.service";
 import { SharedModule } from "../shared.module";
 import { AuthGuard } from "../guards/auth.guard";
 
@@ -32,7 +31,7 @@ import { AuthGuard } from "../guards/auth.guard";
         )
     ],
     exports: [RouterModule],
-    providers: [AuthService, AuthGuard],
+    providers: [AuthGuard],
     declarations: [
 
 

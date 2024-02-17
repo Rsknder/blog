@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +17,16 @@ import { LostPageComponent } from './components/lost-page/lost-page.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { PostComponent } from './components/post/post.component';
 import { SharedModule } from './shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { AuthService } from './services/auth.service';
 
+
+const INTERCEPTOR: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor
+}
 
 @NgModule({
   declarations: [
@@ -38,7 +47,7 @@ import { SharedModule } from './shared.module';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [INTERCEPTOR, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

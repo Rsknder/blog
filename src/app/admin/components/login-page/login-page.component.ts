@@ -28,6 +28,9 @@ export class LoginPageComponent implements OnInit {
       if (params['loginRequired']) {
         this.message = "Please authorize!"
       }
+      if (params['rejectedAuth']) {
+        this.message = "Please authorize again!"
+      }
     }
 
     )

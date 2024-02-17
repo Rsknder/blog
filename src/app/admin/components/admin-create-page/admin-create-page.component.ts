@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from 'src/app/interfaces/interfaces';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-admin-create-page',
@@ -10,6 +11,9 @@ import { Post } from 'src/app/interfaces/interfaces';
 export class AdminCreatePageComponent implements OnInit {
 
   form!: FormGroup;
+  constructor(private postService: PostService) {
+
+  }
 
 
   ngOnInit(): void {
@@ -31,7 +35,13 @@ export class AdminCreatePageComponent implements OnInit {
       text: this.form.value.text,
       date: new Date(),
     }
+
+    this.postService.create(post).subscribe(() => {
+      this.form.reset()
+    })
+
     console.log(post)
   }
 
 }
+// firebase update 16

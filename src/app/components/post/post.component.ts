@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Post } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-post',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class PostComponent {
 
+
+  constructor() {
+
+  }
 }

@@ -23,6 +23,18 @@ export class PostService {
             }))
     }
 
+    // получение постов
+    getAll(): Observable<any> {
+        return this.http.get(`${environments.dbUrl}/postsData.json`)
+    }
 
+    getAllPostsForDS(): Observable<Post[]> {
+        return this.http.get(`${environments.dbUrl}/postsData.json`)
+            .pipe(
+                map((response) => {
+                    return []
+                })
+            )
+    }
 
 }

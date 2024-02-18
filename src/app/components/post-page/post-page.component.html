@@ -1,10 +1,10 @@
 <div class="post">
   <div class="post-header">
-    <h2>Post Title</h2>
-    <small>22.3.2332</small>
+    <h2>{{ post?.title }}</h2>
+    <small>{{ post?.date | date }}</small>
   </div>
   <div>
-    <small>John Smith</small>
+    <small>{{ post?.author }}</small>
   </div>
 
   <button [routerLink]="['/post', 2222]">Open post</button>

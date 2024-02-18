@@ -1,7 +1,5 @@
-<div class="posts">
-  <app-post-page></app-post-page>
-  <app-post-page></app-post-page>
-  <app-post-page></app-post-page>
-  <app-post-page></app-post-page>
-  <app-post-page></app-post-page>
+<div class="posts"></div>
+
+<div *ngFor="let item of posts">
+  <app-post-page [post]="item"> </app-post-page>
 </div>

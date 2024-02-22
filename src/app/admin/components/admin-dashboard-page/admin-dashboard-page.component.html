@@ -1,20 +1,31 @@
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Author</th>
-      <th>Title</th>
-      <th>Data</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="posts.length; else loading">
+  <div class="form-control"></div>
+  <input type="text" placeholder="Find post" />
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Data</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts; let id = index">
+        <td>{{ id + 1 }}</td>
+        <td>{{ post.author }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.date | date }}</td>
+        <td>
+          <button [routerLink]="['/admin/', 'post', post.id, 'edit']">
+            Edit
+          </button>
+          <button (click)="onRemovePost(post.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #loading> loading ... </ng-template>

@@ -1,1 +1,40 @@
-<p>admin-edit-page works!</p>
+<div *ngIf="form; else loading">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Post edit</h1>
+    <div class="form-control">
+      <label for="title"> Post's title</label>
+      <div>
+        <input formControlName="title" id="title" type="text" />
+        <div
+          class="error"
+          *ngIf="form.get('title')?.touched && form.get('title')?.invalid"
+        >
+          <small *ngIf!="form.get('title')?.errors['required']"
+            >enter title</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- need to insert any html edit box -->
+    <div class="form-control">
+      <label for="text"> Post's text</label>
+      <div>
+        <input formControlName="text" id="text" type="text" />
+        <div
+          class="error"
+          *ngIf="form.get('text')?.touched && form.get('text')?.invalid"
+        >
+          <small *ngIf!="form.get('text')?.errors['required']"
+            >enter text</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- need to insert any html edit box for replace input text -->
+
+    <button type="submit" [disabled]="form.invalid">Save post</button>
+  </form>
+</div>
+<ng-template #loading> loading post ...</ng-template>

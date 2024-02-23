@@ -44,4 +44,3 @@ export class AdminCreatePageComponent implements OnInit {
   }
 
 }
-// firebase update 16

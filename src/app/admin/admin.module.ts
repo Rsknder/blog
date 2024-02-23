@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, NgModule } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
@@ -9,6 +9,7 @@ import { AdminCreatePageComponent } from './components/admin-create-page/admin-c
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "../shared.module";
 import { AuthGuard } from "../guards/auth.guard";
+import { SearchPipe } from "../pipes/search.pipe";
 
 @NgModule({
     imports: [
@@ -39,7 +40,8 @@ import { AuthGuard } from "../guards/auth.guard";
         LoginPageComponent,
         AdminDashboardPageComponent,
         AdminEditPageComponent,
-        AdminCreatePageComponent
+        AdminCreatePageComponent,
+        SearchPipe
     ]
 })
 export class AdminModule {

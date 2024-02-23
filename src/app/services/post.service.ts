@@ -55,4 +55,11 @@ export class PostService {
             )
     }
 
+    remove(id: string): Observable<void> {
+        return this.http.delete<void>(`${environments.dbUrl}/postsData/${id}.json`)
+    }
+
+    getPost(id: string): Observable<Post> {
+        return this.http.get<Post>(`${environments.dbUrl}/postsData/${id}.json`)
+    }
 }

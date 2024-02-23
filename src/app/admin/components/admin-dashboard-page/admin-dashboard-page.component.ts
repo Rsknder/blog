@@ -11,21 +11,30 @@ import { PostService } from 'src/app/services/post.service';
 export class AdminDashboardPageComponent implements OnInit, OnDestroy {
 
 
-  onRemovePost(id: string | undefined) {
-
-  }
-
-
+  searchString: string = "";
   posts: Post[] = [];
-  postsSub!: Subscription;
+  getPostsSub!: Subscription;
+  delPostsSub!: Subscription;
 
   constructor(private postService: PostService) {
 
   }
 
+  onRemovePost(id: any) {
+    if (id) {
+      this.delPostsSub = this.postService.remove(id).subscribe(() => {
+        this.fillAllPosts()
+      })
+
+    }
+  }
 
   ngOnInit(): void {
-    this.postsSub = this.postService.getAllPostsForDS().subscribe((posts) => {
+    this.fillAllPosts()
+  }
+
+  fillAllPosts() {
+    this.getPostsSub = this.postService.getAllPostsForDS().subscribe((posts) => {
 
       this.posts = posts
       console.log("response from OnInint ", posts)
@@ -33,7 +42,8 @@ export class AdminDashboardPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.postsSub ? this.postsSub.unsubscribe() : ""
+    this.getPostsSub ? this.getPostsSub.unsubscribe() : ""
+    this.delPostsSub ? this.delPostsSub.unsubscribe() : ""
   }
 
 

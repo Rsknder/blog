@@ -1,6 +1,6 @@
 <div *ngIf="posts.length; else loading">
   <div class="form-control"></div>
-  <input type="text" placeholder="Find post" />
+  <input type="text" placeholder="Find title" [(ngModel)]="searchString" />
   <table>
     <thead>
       <tr>
@@ -12,13 +12,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let post of posts; let id = index">
+      <tr
+        *ngFor="let post of posts | searchPosts : searchString; let id = index"
+      >
         <td>{{ id + 1 }}</td>
         <td>{{ post.author }}</td>
         <td>{{ post.title }}</td>
         <td>{{ post.date | date }}</td>
         <td>
-          <button [routerLink]="['/admin/', 'post', post.id, 'edit']">
+          <button [routerLink]="['/admin', 'post', post.id, 'editpost']">
             Edit
           </button>
           <button (click)="onRemovePost(post.id)">Delete</button>

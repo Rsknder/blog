@@ -8,7 +8,7 @@
         class="error"
         *ngIf="form.get('title')?.touched && form.get('title')?.invalid"
       >
-        <small *ngIf!="form.get('title')?.errors['required']"
+        <small *ngIf="form.controls['title'].errors?.['required']"
           >enter title</small
         >
       </div>
@@ -24,7 +24,7 @@
         class="error"
         *ngIf="form.get('author')?.touched && form.get('author')?.invalid"
       >
-        <small *ngIf!="form.get('author')?.errors['required']"
+        <small *ngIf="form.controls['author'].errors?.['required']"
           >enter author</small
         >
       </div>
@@ -40,7 +40,9 @@
         class="error"
         *ngIf="form.get('text')?.touched && form.get('text')?.invalid"
       >
-        <small *ngIf!="form.get('text')?.errors['required']">enter text</small>
+        <small *ngIf="form.controls['text'].errors?.['required']"
+          >enter text</small
+        >
       </div>
     </div>
   </div>

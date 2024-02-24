@@ -9,7 +9,7 @@
           class="error"
           *ngIf="form.get('title')?.touched && form.get('title')?.invalid"
         >
-          <small *ngIf!="form.get('title')?.errors['required']"
+          <small *ngIf="form.controls['title'].errors?.['required']"
             >enter title</small
           >
         </div>
@@ -25,7 +25,7 @@
           class="error"
           *ngIf="form.get('text')?.touched && form.get('text')?.invalid"
         >
-          <small *ngIf!="form.get('text')?.errors['required']"
+          <small *ngIf="form.controls['text'].errors?.['required']"
             >enter text</small
           >
         </div>
@@ -34,7 +34,9 @@
 
     <!-- need to insert any html edit box for replace input text -->
 
-    <button type="submit" [disabled]="form.invalid">Save post</button>
+    <button type="submit" [disabled]="form.invalid || isSubmited">
+      Save post
+    </button>
   </form>
 </div>
 <ng-template #loading> loading post ...</ng-template>

@@ -62,4 +62,9 @@ export class PostService {
     getPost(id: string): Observable<Post> {
         return this.http.get<Post>(`${environments.dbUrl}/postsData/${id}.json`)
     }
+
+    updatePost(post: Post): Observable<Post> {
+        return this.http.patch<Post>(`${environments.dbUrl}/postsData/${post.id}.json`, post)
+    }
+
 }

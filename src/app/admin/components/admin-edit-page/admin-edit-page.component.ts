@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Post } from 'src/app/interfaces/interfaces';
+import { AlertService } from 'src/app/services/alert.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class AdminEditPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private postService: PostService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertService: AlertService
   ) {
 
   }
@@ -59,6 +61,7 @@ export class AdminEditPageComponent implements OnInit, OnDestroy {
         date: this.post?.date
       }).subscribe(() => {
         this.isSubmited = false
+        this.alertService.success("post updated!")
       })
 
     }

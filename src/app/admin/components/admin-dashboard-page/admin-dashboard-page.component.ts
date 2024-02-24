@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Post } from 'src/app/interfaces/interfaces';
+import { AlertService } from 'src/app/services/alert.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -16,14 +17,18 @@ export class AdminDashboardPageComponent implements OnInit, OnDestroy {
   getPostsSub!: Subscription;
   delPostsSub!: Subscription;
 
-  constructor(private postService: PostService) {
+  constructor(
+    private postService: PostService,
+    private alertService: AlertService
+  ) {
 
   }
 
-  onRemovePost(id: any) {
+  RemovePost(id: any) {
     if (id) {
       this.delPostsSub = this.postService.remove(id).subscribe(() => {
         this.fillAllPosts()
+        this.alertService.danger('Post deleted!')
       })
 
     }

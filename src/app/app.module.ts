@@ -1,12 +1,8 @@
 import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,7 +16,10 @@ import { SharedModule } from './shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { AuthService } from './services/auth.service';
+import { registerLocaleData } from '@angular/common';
+import ruLocaleData from '@angular/common/locales/ru';
 
+registerLocaleData(ruLocaleData, 'ru')
 
 const INTERCEPTOR: Provider = {
   provide: HTTP_INTERCEPTORS,

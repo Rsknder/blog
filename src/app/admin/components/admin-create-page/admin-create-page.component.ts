@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from 'src/app/interfaces/interfaces';
+import { AlertService } from 'src/app/services/alert.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -11,7 +12,10 @@ import { PostService } from 'src/app/services/post.service';
 export class AdminCreatePageComponent implements OnInit {
 
   form!: FormGroup;
-  constructor(private postService: PostService) {
+  constructor(
+    private postService: PostService,
+    private alertService: AlertService
+  ) {
 
   }
 
@@ -38,9 +42,9 @@ export class AdminCreatePageComponent implements OnInit {
 
     this.postService.create(post).subscribe(() => {
       this.form.reset()
+      this.alertService.success("Post created!")
     })
 
-    console.log(post)
   }
 
 }

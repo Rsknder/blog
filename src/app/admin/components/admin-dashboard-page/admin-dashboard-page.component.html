@@ -18,12 +18,12 @@
         <td>{{ id + 1 }}</td>
         <td>{{ post.author }}</td>
         <td>{{ post.title }}</td>
-        <td>{{ post.date | date }}</td>
+        <td>{{ post.date | date : "medium" : "" : "ru" }}</td>
         <td>
           <button [routerLink]="['/admin', 'post', post.id, 'editpost']">
             Edit
           </button>
-          <button (click)="onRemovePost(post.id)">Delete</button>
+          <button (click)="RemovePost(post.id)">Delete</button>
         </td>
       </tr>
     </tbody>

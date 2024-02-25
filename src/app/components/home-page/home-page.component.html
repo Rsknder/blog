@@ -1,5 +1,9 @@
-<div class="posts"></div>
-
-<div *ngFor="let item of posts">
-  <app-post-page [post]="item"> </app-post-page>
+<div class="posts">
+  <div *ngIf="posts$ | async as posts; else loading">
+    <app-post-page *ngFor="let post of posts" [post]="post"> </app-post-page>
+  </div>
 </div>
+
+<ng-template #loading>
+  <p>loading posts...</p>
+</ng-template>

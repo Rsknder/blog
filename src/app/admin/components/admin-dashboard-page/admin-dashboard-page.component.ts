@@ -39,7 +39,7 @@ export class AdminDashboardPageComponent implements OnInit, OnDestroy {
   }
 
   fillAllPosts() {
-    this.getPostsSub = this.postService.getAllPostsForDS().subscribe((posts) => {
+    this.getPostsSub = this.postService.getAllPosts().subscribe((posts) => {
 
       this.posts = posts
       console.log("response from OnInint ", posts)

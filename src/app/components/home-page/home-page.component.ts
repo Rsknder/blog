@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Post } from 'src/app/interfaces/interfaces';
 import { PostService } from 'src/app/services/post.service';
 
@@ -10,7 +10,9 @@ import { PostService } from 'src/app/services/post.service';
 })
 
 export class HomePageComponent implements OnInit {
-  posts: Post[] = []
+
+
+  posts$!: Observable<Post[]>;
 
 
   constructor(private postService: PostService) {
@@ -19,21 +21,9 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.postService.getAll().subscribe((response) => {
-      console.log("#response:", response)
-
-      Object.keys(response).forEach((v, k) => {
-        console.log(v, k)
-        console.log(response[v])
-        response[v].id = v
-        this.posts.push(response[v])
-      })
-
-      console.log(this.posts)
-
-    }
-    )
+    this.posts$ = this.postService.getAllPosts()
 
   }
 
 }
+

@@ -23,29 +23,15 @@ export class PostService {
             }))
     }
 
-    // получение постов
-
-    getAll(): Observable<any> {
-
-        return this.http.get(`${environments.dbUrl}/postsData.json`)
-
-    }
-
-    // получение постов версия 2
-
-    getAllPostsForDS(): Observable<any> {
+    getAllPosts(): Observable<any> {
         var posts: any = []
         console.log("getAllPostsForDS")
         return this.http.get(`${environments.dbUrl}/postsData.json`)
             .pipe(
                 map((response: { [index: string]: any }) => {
                     console.log(Object.keys(response).forEach((key, value) => {
-                        console.log(key)
                         response[key].id = key
                         posts.push(response[key])
-
-                        // =(response[key])
-
                     }))
 
                     console.log("posts:", posts)

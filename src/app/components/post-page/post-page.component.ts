@@ -7,5 +7,6 @@ import { Post } from 'src/app/interfaces/interfaces';
   styleUrls: ['./post-page.component.scss']
 })
 export class PostPageComponent {
-  @Input() post: Post | undefined;
+  @Input()
+  post!: Post;
 }

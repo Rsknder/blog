@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Post } from 'src/app/interfaces/interfaces';
 import { PostService } from 'src/app/services/post.service';
+import { environments } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home-page',
@@ -22,6 +23,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
 
     this.posts$ = this.postService.getAllPosts()
+    console.log("env.prod:", environments.production)
 
   }
 

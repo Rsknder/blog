@@ -25,16 +25,16 @@ export class PostService {
 
     getAllPosts(): Observable<any> {
         var posts: any = []
-        console.log("getAllPostsForDS")
+
         return this.http.get(`${environments.dbUrl}/postsData.json`)
             .pipe(
                 map((response: { [index: string]: any }) => {
-                    console.log(Object.keys(response).forEach((key, value) => {
+                    Object.keys(response).forEach((key, value) => {
                         response[key].id = key
                         posts.push(response[key])
-                    }))
+                    })
 
-                    console.log("posts:", posts)
+
                     return posts
 
                 })

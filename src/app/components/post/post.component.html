@@ -1,7 +1,7 @@
 <div class="post" *ngIf="post$ | async as post; loading">
   <div class="header">
     <h1>{{ post.title }}</h1>
-    <button routerLink="/">to Main page</button>
+    <button routerLink="/">Return to main page</button>
   </div>
 
   <div class="info">
@@ -9,7 +9,7 @@
     <small> {{ post.date | date : "medium" : "" : "ru" }}</small>
   </div>
   <div>
-    {{ post.text }}
+    <quill-view-html [content]="post.text"></quill-view-html>
   </div>
 </div>
 <ng-template #loading> <p>loading post...</p></ng-template>

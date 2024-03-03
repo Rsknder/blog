@@ -19,6 +19,7 @@ import { AuthService } from './services/auth.service';
 import { registerLocaleData } from '@angular/common';
 import ruLocaleData from '@angular/common/locales/ru';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { QuillModule } from 'ngx-quill'
 
 registerLocaleData(ruLocaleData, 'ru')
 
@@ -39,6 +40,7 @@ const INTERCEPTOR: Provider = {
     PostComponent
   ],
   imports: [
+    // QuillModule.forRoot(),
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,

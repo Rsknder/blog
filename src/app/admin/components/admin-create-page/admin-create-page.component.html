@@ -1,9 +1,14 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <h1>New post creation</h1>
+  <h1>Create new post</h1>
   <div class="form-control">
     <label for="title"> Post's title</label>
     <div>
-      <input formControlName="title" id="title" type="text" />
+      <input
+        formControlName="title"
+        id="title"
+        type="text"
+        placeholder="Title"
+      />
       <div
         class="error"
         *ngIf="form.get('title')?.touched && form.get('title')?.invalid"
@@ -19,7 +24,12 @@
     <label for="author"> Post's author</label>
 
     <div>
-      <input formControlName="author" id="author" type="author" />
+      <input
+        formControlName="author"
+        id="author"
+        type="author"
+        placeholder="Author"
+      />
       <div
         class="error"
         *ngIf="form.get('author')?.touched && form.get('author')?.invalid"
@@ -33,9 +43,11 @@
 
   <!-- need to insert any html edit box -->
   <div class="form-control">
-    <label for="text"> Post's text</label>
+    <label for="text"> Post's content</label>
     <div>
-      <input formControlName="text" id="text" type="text" />
+      <quill-editor formControlName="text"></quill-editor>
+      <!-- <input formControlName="text" id="text" type="text" /> -->
+
       <div
         class="error"
         *ngIf="form.get('text')?.touched && form.get('text')?.invalid"

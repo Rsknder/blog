@@ -42,7 +42,7 @@ export class AdminDashboardPageComponent implements OnInit, OnDestroy {
     this.getPostsSub = this.postService.getAllPosts().subscribe((posts) => {
 
       this.posts = posts
-      console.log("response from OnInint ", posts)
+
     })
   }
 

@@ -32,7 +32,7 @@ export class AdminEditPageComponent implements OnInit, OnDestroy {
       this.postService.getPost(params['id']).subscribe((v) => {
         this.post = v
         this.post.id = params['id']
-        console.log("v:", v)
+
 
         this.form = new FormGroup({
           title: new FormControl(this.post.title, Validators.required),
@@ -47,7 +47,7 @@ export class AdminEditPageComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-    console.log("#this.post", this.post)
+
     if (this.form.invalid) { return }
 
     this.isSubmited = true

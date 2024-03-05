@@ -1,11 +1,13 @@
 <div class="post">
   <div class="post-header">
-    <h2>{{ post.title }}</h2>
+    <small>{{ post.author }}</small>
     <small>{{ post.date | date : "dd.MM.yyyy" }}</small>
   </div>
-  <div>
-    <small>{{ post.author }}</small>
-  </div>
+  <div class="post-name">
+    <h2>{{ post.title }}</h2>
 
-  <button [routerLink]="['/post', post.id]">View</button>
+    <button mat-raised-button extended [routerLink]="['/post', post.id]">
+      View
+    </button>
+  </div>
 </div>
